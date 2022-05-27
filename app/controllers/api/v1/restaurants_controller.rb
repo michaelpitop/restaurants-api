@@ -2,6 +2,8 @@ class Api::V1::RestaurantsController < Api::V1::BaseController
   before_action :set_restaurant, only: [ :show, :destroy ]
 
   def show
+    @restaurant = Restaurant.find(params[:id])
+    authorize @restaurant
   end
 
   def index
@@ -28,6 +30,7 @@ class Api::V1::RestaurantsController < Api::V1::BaseController
     @restaurant = Restaurant.find(params[:id])
     authorize @restaurant  # For Pundit
   end
+
   def restaurant_params
     params.require(:restaurant).permit(:name, :address)
   end
