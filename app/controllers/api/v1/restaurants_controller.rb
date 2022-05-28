@@ -25,6 +25,7 @@ class Api::V1::RestaurantsController < Api::V1::BaseController
       render :show, status: :created
     else
       render_error
+    end
   end
 
   def destroy
